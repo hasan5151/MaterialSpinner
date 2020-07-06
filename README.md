@@ -17,7 +17,7 @@ Add it in your root build.gradle at the end of repositories:
 ```bash
 dependencies 
         {
-	         implementation'com.huzzy.materialspinner:MaterialSpinner:v0.1'
+	         implementation'com.github.hasan5151:MaterialSpinner:v0.1'
 	}
 ```
 
