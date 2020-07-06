@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MaterialSpinner.iml" filepath="$PROJECT_DIR$/.idea/modules/MaterialSpinner.iml" group="MaterialSpinner" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="MaterialSpinner/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/materialspinner/materialspinner.iml" filepath="$PROJECT_DIR$/.idea/modules/materialspinner/materialspinner.iml" group="MaterialSpinner/materialspinner" />
+    </modules>
+  </component>
+</project>
