@@ -2,6 +2,10 @@
 <resources>
     <declare-styleable name="MaterialSpinner" >
         <attr name="labelText" format="string" />
+        <attr name="labelBgColor" format="color" />
         <attr name="widgetColor" format="color" />
+        <attr name="widgetTickness" format="integer" />
+        <attr name="labelSize" format="dimension" />
+        <attr name="labelColor" format="color" />
     </declare-styleable>
 </resources>

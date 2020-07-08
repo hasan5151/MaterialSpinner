@@ -1,11 +1,15 @@
 package com.huzzy.materialspinner
 
 import android.content.Context
+import android.graphics.drawable.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
+
 
 class MaterialSpinner(context: Context, attr: AttributeSet) : LinearLayout(context, attr) {
 
@@ -23,13 +27,18 @@ class MaterialSpinner(context: Context, attr: AttributeSet) : LinearLayout(conte
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.material_custom_spinner, this, true)
 
-        orientation = LinearLayout.VERTICAL
-        layoutParams = LinearLayout.LayoutParams(
+        orientation = VERTICAL
+        layoutParams = LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val typedArray = context.obtainStyledAttributes(attr, R.styleable.MaterialSpinner, 0, 0)
         val labelText = typedArray.getString(R.styleable.MaterialSpinner_labelText)
+        val labelBackgroundColor = typedArray.getColor(R.styleable.MaterialSpinner_labelBgColor,ContextCompat.getColor(context,R.color.bg))
+        val widgetColor = typedArray.getColor(R.styleable.MaterialSpinner_widgetColor,ContextCompat.getColor(context,R.color.white))
+        val widgetTick = typedArray.getInt(R.styleable.MaterialSpinner_widgetTickness,3)
+        val labelSize = typedArray.getDimension(R.styleable.MaterialSpinner_labelSize,12F)
+        val labelColor = typedArray.getColor(R.styleable.MaterialSpinner_labelColor,ContextCompat.getColor(context,R.color.hint_text_color))
 
         typedArray.recycle()
 
@@ -38,12 +47,30 @@ class MaterialSpinner(context: Context, attr: AttributeSet) : LinearLayout(conte
         spinner = findViewById(R.id.spinner)
         mLabel = findViewById(R.id.label)
 
+
         if (labelText==null) {
             mLabel.visibility = View.GONE
         } else {
             mLabel.text = labelText
             mLabel.visibility = View.VISIBLE
-        }
+         }
+
+
+        val layerDrawable = spinnerLayout.background as LayerDrawable
+        val gradientDrawable = layerDrawable
+            .findDrawableByLayerId(R.id.drawable) as GradientDrawable
+        gradientDrawable.setStroke(widgetTick,widgetColor)
+
+        mLabel.setBackgroundColor(labelBackgroundColor)
+        mLabel.textSize = labelSize
+        mLabel.setTextColor(labelColor)
+    }
+
+    fun setWidgetColor(color : Int){
+        var layerDrawable = spinnerLayout.background as LayerDrawable
+        val gradientDrawable = layerDrawable
+            .findDrawableByLayerId(R.id.drawable) as GradientDrawable
+        gradientDrawable.setStroke(3,color)
     }
 
     fun getSpinner(): Spinner {
@@ -71,7 +98,8 @@ class MaterialSpinner(context: Context, attr: AttributeSet) : LinearLayout(conte
         if (error!=null && error.trim().isNotEmpty()) {
             errorTextView.visibility = View.VISIBLE
             errorTextView.text = error
-            spinnerLayout.setBackgroundResource(R.drawable.payment_edit_error_bg)
+//            spinnerLayout.setBackgroundResource(R.drawable.payment_edit_error_bg)
+        //    spinner.setBackgroundColor(widgetColor)
         } else {
             errorTextView.visibility = View.INVISIBLE
             spinnerLayout.setBackgroundResource(R.drawable.payment_edit_bg)
@@ -85,7 +113,7 @@ class MaterialSpinner(context: Context, attr: AttributeSet) : LinearLayout(conte
 
         } else {
             errorTextView.visibility = View.INVISIBLE
-            spinnerLayout.setBackgroundResource(R.drawable.payment_edit_bg)
+         //   spinnerLayout.setBackgroundResource(R.drawable.payment_edit_bg)
         }
     }
 }

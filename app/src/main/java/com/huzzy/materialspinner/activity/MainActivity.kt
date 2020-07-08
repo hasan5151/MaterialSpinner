@@ -10,8 +10,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.huzzy.materialspinner.MaterialSpinner
 
-import com.huzzy.materialspinner.R
-
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -26,14 +24,19 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setSupportActionBar(toolbar)
 
         spinner = findViewById(R.id.material_spinner)
-        spinner.getSpinner().onItemSelectedListener = this
+//        spinner.getSpinner().onItemSelectedListener = this
+
+
+        spinner.setItemSelectedListener(this)
+
+//        spinner.setWidgetColor(R.color.faded_orange)
 
         // Create an ArrayAdapter using a simple spinner layout and languages array
         val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, list_of_items)
         // Set layout to use when the list of choices appear
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Set Adapter to Spinner
-        spinner!!.setAdapter(aa)
+//         Set Adapter to Spinner
+        spinner.setAdapter(aa)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()

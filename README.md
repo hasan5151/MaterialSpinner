@@ -36,18 +36,20 @@ dependencies
         tools:showIn="@layout/activity_main"
         tools:context=".activity.MainActivity">
 
-
-
     <com.huzzy.materialspinner.MaterialSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_10"
+            app:widgetColor="@color/colorPrimary"
+            app:widgetTickness="3"
+            app:labelBgColor="@color/white"
+            app:labelSize="6sp"
+            app:labelColor="@color/colorPrimary"
             android:id="@+id/material_spinner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
     </com.huzzy.materialspinner.MaterialSpinner>
 
 </android.support.constraint.ConstraintLayout>
